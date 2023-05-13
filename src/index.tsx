@@ -17,6 +17,27 @@ const PixelColors = NativeModules.PixelColors
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return PixelColors.multiply(a, b);
+type Callback = (width: number, height: number) => void;
+
+export function setImage(imageUri: string, callback?: Callback) {
+  try {
+    PixelColors.setImage(imageUri, callback ?? (() => {}));
+  } catch (error) {
+    throw new Error('Error setting image');
+  }
+}
+
+export function getImageSize(callback?: Callback) {
+  PixelColors.getImageSize(callback ?? (() => {}));
+}
+
+export async function getPixelColor(x: number, y?: number) {
+  const result = await PixelColors.getPixelColor(
+    x,
+    isNaN(y as number) ? x : y
+  ).then((color: string) => {
+    return color;
+  });
+
+  return result ?? '';
 }

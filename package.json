@@ -10,7 +10,7 @@
   "files": [
     "src",
     "lib",
-    "android",
+    "!android",
     "ios",
     "cpp",
     "*.podspec",
@@ -39,7 +39,9 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "colors",
+    "pixel",
+    "react-native-pixel-colors"
   ],
   "repository": "https://github.com/codergon/react-native-pixel-colors",
   "author": "Kester Atakere <atakerewilliams@gmail.com> (https://alphaglitch.dev)",
